@@ -1,0 +1,27 @@
+version: "2.1"
+services:
+  web:
+    environment:
+      - APACHE_DOCUMENTROOT=/var/www/app/${APP_DOCROOT}
+  api:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: apache
+    depends_on:
+      - cli
+    environment:
+      - APACHE_DOCUMENTROOT=/var/www/api/${API_DOCROOT}
+    labels:
+      - io.docksal.virtual-host=api.${VIRTUAL_HOST}
+  cli:
+    labels:
+      - io.docksal.virtual-host=dev.${VIRTUAL_HOST}
+      - io.docksal.virtual-port=3000
+  redis:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: redis
+  mail:
+    extends:
+      file: ${HOME}/.docksal/stacks/services.yml
+      service: mail

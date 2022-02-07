@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Description: Run npx commands inside theme.
+## Usage: npx [flags] [args]
+## Example: "npx tailwindcss init"
+
+cd /var/www/app && npx $@

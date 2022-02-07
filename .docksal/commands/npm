@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Description: Run npm commands inside theme.
+## Usage: npm [flags] [args]
+## Example: "npm install or npm rebuild node-sass or npm run build or npm run watch"
+
+cd /var/www/app && npm $@
